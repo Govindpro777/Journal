@@ -3,18 +3,17 @@ import { useNavigate } from 'react-router-dom';
 import { Book, LogOut, Search, Plus, Edit2, Trash2 } from 'lucide-react';
 import { journalAPI } from '../services/api';
 import { useAuth } from '../context/AuthContext';
-import { JournalEntry } from '../types';
 import toast from 'react-hot-toast';
 
 const Journal = () => {
-  const [entries, setEntries] = useState<JournalEntry[]>([]);
+  const [entries, setEntries] = useState([]);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [mood, setMood] = useState<'Happy' | 'Neutral' | 'Sad'>('Neutral');
+  const [mood, setMood] = useState('Neutral');
   const [filter, setFilter] = useState('');
   const [moodFilter, setMoodFilter] = useState('');
   const [quote, setQuote] = useState('');
-  const [isEditing, setIsEditing] = useState<string | null>(null);
+  const [isEditing, setIsEditing] = useState(null);
   const { logout } = useAuth();
   const navigate = useNavigate();
 
@@ -40,7 +39,7 @@ const Journal = () => {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       if (isEditing) {
@@ -61,14 +60,14 @@ const Journal = () => {
     }
   };
 
-  const handleEdit = (entry: JournalEntry) => {
+  const handleEdit = (entry) => {
     setIsEditing(entry._id);
     setTitle(entry.title);
     setContent(entry.content);
     setMood(entry.mood);
   };
 
-  const handleDelete = async (id: string) => {
+  const handleDelete = async (id) => {
     try {
       await journalAPI.deleteEntry(id);
       toast.success('Entry deleted successfully');
@@ -142,7 +141,7 @@ const Journal = () => {
                   <label className="block text-sm font-medium text-gray-700">Mood</label>
                   <select
                     value={mood}
-                    onChange={(e) => setMood(e.target.value as 'Happy' | 'Neutral' | 'Sad')}
+                    onChange={(e) => setMood(e.target.value)}
                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                   >
                     <option value="Happy">Happy</option>

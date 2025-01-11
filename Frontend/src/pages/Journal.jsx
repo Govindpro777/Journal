@@ -95,7 +95,6 @@ const Journal = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
             <div className="flex items-center">
-              <Book className="w-8 h-8 text-indigo-600" />
               <span className="ml-2 text-xl font-semibold">Mood Journal</span>
             </div>
             <button
@@ -118,12 +117,12 @@ const Journal = () => {
               </h2>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">Title</label>
+                  <label className="block text-sm font-medium text-gray-700 ">Title</label>
                   <input
                     type="text"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                    className="mt-1 block w-full rounded-md  shadow-sm focus:border-indigo-500 focus:ring-indigo-500 border-2 border-indigo-500"
                     required
                   />
                 </div>
@@ -133,7 +132,7 @@ const Journal = () => {
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                     rows={4}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                    className="mt-1 block w-full rounded-md border-2 border-indigo-500 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                     required
                   />
                 </div>
@@ -142,7 +141,7 @@ const Journal = () => {
                   <select
                     value={mood}
                     onChange={(e) => setMood(e.target.value)}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                    className="mt-1 block w-full rounded-md border-2 border-indigo-500 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                   >
                     <option value="Happy">Happy</option>
                     <option value="Neutral">Neutral</option>
